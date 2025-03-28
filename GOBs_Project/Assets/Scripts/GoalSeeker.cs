@@ -19,7 +19,7 @@ public class GoalSeeker : MonoBehaviour
         mGoals[2] = new Goal("Bathroom", 3);
 
         // the actions I know how to do
-        mActions = new Action[6];
+        mActions = new Action[8];
         mActions[0] = new Action("eat some raw food");
         mActions[0].targetGoals.Add(new Goal("Eat", -3f));
         mActions[0].targetGoals.Add(new Goal("Sleep", +2f));
@@ -49,6 +49,16 @@ public class GoalSeeker : MonoBehaviour
         mActions[5].targetGoals.Add(new Goal("Eat", 0f));
         mActions[5].targetGoals.Add(new Goal("Sleep", 0f));
         mActions[5].targetGoals.Add(new Goal("Bathroom", -4f));
+
+        mActions[6] = new Action("eat a meal");
+        mActions[6].targetGoals.Add(new Goal("Eat", -4f));
+        mActions[6].targetGoals.Add(new Goal("Sleep", +3f));
+        mActions[6].targetGoals.Add(new Goal("Bathroom", +2f));
+
+        mActions[7] = new Action("drink coffee");
+        mActions[7].targetGoals.Add(new Goal("Eat", -1f));
+        mActions[7].targetGoals.Add(new Goal("Sleep", -3f));
+        mActions[7].targetGoals.Add(new Goal("Bathroom", +4f));
 
         // the rate my goals change just as a result of time passing
         mChangeOverTime = new Action("tick");
@@ -91,8 +101,6 @@ public class GoalSeeker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            
-
             Action bestThingToDo = ChooseAction(mActions, mGoals);
             Debug.Log("I think I will " + bestThingToDo.name);
 
